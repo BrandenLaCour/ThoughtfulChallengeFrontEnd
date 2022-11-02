@@ -3,7 +3,7 @@
 I decided to create a simple Album login. Its not as pretty as I would like it, as I focused more on functionality, since I've mostly been doing backend work lately.
 I am just a bit rusty with React since I've mainly been only making small tweaks or fixes in my current postion, while mainly working with python in the backend.
 
-I would have liked to add more style and jazz to the login page, while also making the album page more of a full screen experience with a bit more customization. Also a small loading circle would have been nice for waiting for login validation/ email OTP response. Secondly having a simple router would have been nice.
+I would have liked to add more style and jazz to the login page, while also making the album page more of a full screen experience with a bit more customization. Also the code could be a bit more DRY. Secondly having a simple router would have been nice.
 
 ## Important
 I will need to add the users email to SES for this to work and for the user to recieve the OTP email. They require verification in the free tier of SES.

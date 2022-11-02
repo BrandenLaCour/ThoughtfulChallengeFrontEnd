@@ -2,6 +2,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import { RotatingLines } from "react-loader-spinner";
 
 import { useState } from "react";
 
@@ -11,9 +12,12 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 	const [emailInput, setEmailInput] = useState("");
 	const [passInput, setPassInput] = useState("");
 	const [OTPInput, setOTPInput] = useState("");
+	const [alertColor, setAlertColor] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleEmailChange = (event) => {
 		setEmailInput(event.target.value);
+		if (alertColor) setAlertColor(false);
 		if (message) {
 			setMessage("");
 		}
@@ -21,6 +25,7 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 
 	const handlePassChange = (event) => {
 		setPassInput(event.target.value);
+		if (alertColor) setAlertColor(false);
 	};
 
 	const handleOTPChange = (event) => {
@@ -29,6 +34,7 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setIsLoading(true)
 		if (OTPInput) {
 			const passwordResponse = axios.post(apiUrl + "get-email", {
 				email: OTPInput,
@@ -37,10 +43,14 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 				.then((data) => {
 					if (data.status === 200) {
 						setMessage("Check your email for your OTP");
+						setIsLoading(false)
 						setOTPInput("");
 					}
 				})
 				.catch((error) => {
+					setMessage("there was an error sending your email");
+					setAlertColor(true);
+					setIsLoading(false)
 					console.log(error);
 				});
 		} else {
@@ -52,11 +62,15 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 				.then((data) => {
 					if (data.status === 200) {
 						setLoggedIn(true);
+						setIsLoading(false)
 						setMessage(`Welcome ${emailInput}`);
 					}
 					//validate data is good and put logged in
 				})
 				.catch((error) => {
+					setMessage("email or password is incorrect");
+					setAlertColor(true);
+					setIsLoading(false)
 					console.log(error);
 				});
 		}
@@ -108,14 +122,28 @@ const LoginPage = ({ setLoggedIn, setMessage, message }) => {
 						/>
 					</Form.Group>
 					<Button
-						style={{ marginTop: "2%" }}
+						style={{ marginTop: "2%", marginRight: "20px" }}
 						type="submit"
 						className="btn btn-primary"
 					>
 						Submit
 					</Button>
+					{isLoading ? (
+						<RotatingLines
+							height="80"
+							width="40"
+							radius="9"
+							color="green"
+							ariaLabel="loading"
+							wrapperStyle
+							wrapperClass
+						/>
+					) : null}
 					<Form.Group>
-						<Form.Label className="mt-2" style={{ color: "white" }}>
+						<Form.Label
+							className="mt-2"
+							style={alertColor ? { color: "red" } : { color: "white" }}
+						>
 							{message ? message : null}
 						</Form.Label>
 					</Form.Group>
