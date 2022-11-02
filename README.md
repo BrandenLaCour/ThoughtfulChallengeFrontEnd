@@ -12,3 +12,7 @@ Axios
 
 ## Author
 Branden LaCour
+
+## Last Notes
+Many more React implementations can be seen on my github from past personal projects such as this one with much more styling done: 
+ [Bar Room Checklist React App](https://github.com/BrandenLaCour/Bar_Hero)
