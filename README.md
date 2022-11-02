@@ -5,6 +5,10 @@ I am just a bit rusty with React since I've mainly been only making small tweaks
 
 I would have liked to add more style and jazz to the login page, while also making the album page more of a full screen experience with a bit more customization. Also a small loading circle would have been nice for waiting for login validation/ email OTP response. Secondly having a simple router would have been nice.
 
+## Important
+I will need to add the users email to SES for this to work and for the user to recieve the OTP email. They require verification in the free tier of SES.
+Just feel free to reach out to me which emails need to be added.
+
 ## Libraries Used
 
 React-Bootstrap
