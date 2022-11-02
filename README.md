@@ -9,6 +9,8 @@ I would have liked to add more style and jazz to the login page, while also maki
 I will need to add the users email to SES for this to work and for the user to recieve the OTP email. They require verification in the free tier of SES.
 Just feel free to reach out to me which emails need to be added.
 
+Website Link:  [CyberAlbum](http://thoughtfulnewbucket2022b12340dak23.s3-website-us-east-1.amazonaws.com/)
+
 ## Libraries Used
 
 React-Bootstrap
