@@ -13,6 +13,7 @@ Just feel free to reach out to me which emails need to be added.
 
 React-Bootstrap
 Axios
+React-Loader-Spinner
 
 ## Author
 Branden LaCour
